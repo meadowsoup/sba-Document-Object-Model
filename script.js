@@ -41,3 +41,24 @@ todoList.addEventListener('click', (e) => {
   }
 });
 
+// listener for clearing tasks
+clearButton.addEventListener('click', () => {
+  // iterate over all child elements
+  while (todoList.firstChild) {
+    // remove one by one
+    todoList.removeChild(todoList.firstChild);
+  }
+});
+
+// hover effect
+todoList.addEventListener('mouseover', (e) => {
+  // checking if hovered ele is an li
+  if (e.target.tagName === 'Li') {
+    // reset background color
+    e.target.style.backgroundColor = 'white';
+  }
+});
+
+// using BOM
+console.log('Window location:', window.location.href);
+window.alert('Welcome to the To-Do List!')
