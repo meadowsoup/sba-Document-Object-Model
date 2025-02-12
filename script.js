@@ -1,8 +1,8 @@
 // caching elements
 const todoForm = document.getElementById('to-do');
-const todoInput = document.querySelector('#to-do input');
-const todoList = document.querySelector('#to-do list');
-const clearButton = document.querySelector('#clear');
+const todoInput = document.querySelector('todo-input');
+const todoList = document.querySelector('todo-list');
+const clearButton = document.querySelector('clear');
 
 // event listener for the form submission
 todoForm.addEventListener('submit', (e) => {
@@ -19,7 +19,7 @@ todoForm.addEventListener('submit', (e) => {
 
   // adding task text
   const taskText = document.createElement('span'); // task text
-  taskText.taskContent = todoInput.value; // setting to input
+  taskText.textContent = todoInput.value; // setting to input
   li.appendChild(taskText); // appending to li
 
   // adding delete button
@@ -58,9 +58,15 @@ todoList.addEventListener('mouseover', (e) => {
   // checking if hovered ele is an li
   if (e.target.tagName === 'LI') {
     // reset background color
-    e.target.style.backgroundColor = 'white';
+    e.target.style.backgroundColor = '#f0f0f0';
   }
 });
+
+todoList.addEventListener('mouseout', (e) => {
+  if (e.target.tagName === 'LI') {
+    e.target.style.backgroundColor = '';
+  }
+})
 
 // using BOM
 console.log('Window location:', window.location.href);
