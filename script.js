@@ -1,8 +1,8 @@
 // caching elements
 const todoForm = document.getElementById('to-do');
-const todoInput = document.querySelector('to-do input');
-const todoList = document.querySelector('to-do list');
-const clearButton = document.querySelector('clear');
+const todoInput = document.querySelector('#to-do input');
+const todoList = document.querySelector('#to-do list');
+const clearButton = document.querySelector('#clear');
 
 // event listener for the form submission
 todoForm.addEventListener('submit', (e) => {
@@ -15,7 +15,10 @@ todoForm.addEventListener('submit', (e) => {
   }
 
   // new list creation
-  const li = document.createElement('span'); // task text
+  const li = document.createElement('li');
+
+  // adding task text
+  const taskText = document.createElement('span'); // task text
   taskText.taskContent = todoInput.value; // setting to input
   li.appendChild(taskText); // appending to li
 
@@ -34,7 +37,7 @@ todoForm.addEventListener('submit', (e) => {
 // listener for delete using event delegation
 todoList.addEventListener('click', (e) => {
   // check if element works
-  if (e.target.tagName === 'Button') {
+  if (e.target.tagName === 'BUTTON') {
     // parent node to access parent of button
     const li = e.target.parentNode;
     li.remove(); // remove from list
@@ -53,7 +56,7 @@ clearButton.addEventListener('click', () => {
 // hover effect
 todoList.addEventListener('mouseover', (e) => {
   // checking if hovered ele is an li
-  if (e.target.tagName === 'Li') {
+  if (e.target.tagName === 'LI') {
     // reset background color
     e.target.style.backgroundColor = 'white';
   }
