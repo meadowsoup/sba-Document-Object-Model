@@ -17,7 +17,27 @@ todoForm.addEventListener('submit', (e) => {
   // new list creation
   const li = document.createElement('span'); // task text
   taskText.taskContent = todoInput.value; // setting to input
-  li.appendChild(taskText); // appending
+  li.appendChild(taskText); // appending to li
 
+  // adding delete button
+  const deleteButton = document.createElement('button'); // creating delete button
+  deleteButton.textContent = 'Delete'; // button text set
+  li.appendChild(deleteButton); // appending
   
-})
+  // appending to the to-do list
+  todoList.appendChild(li);
+
+  // clear input after adding task
+  todoInput.value = '';
+});
+
+// listener for delete using event delegation
+todoList.addEventListener('click', (e) => {
+  // check if element works
+  if (e.target.tagName === 'Button') {
+    // parent node to access parent of button
+    const li = e.target.parentNode;
+    li.remove(); // remove from list
+  }
+});
+
